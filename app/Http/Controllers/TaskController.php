@@ -14,7 +14,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('tasks.index');
+        $tasks = Task::where('user_id', auth()->user()->id)->get()->sortDesc();
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -35,7 +36,14 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:200',
+            'description' => 'max:255'
+        ]);
+
+        $request->user()->tasks()->create($validated);
+
+        return back()->with('success', 'Your Task is added successfully!');
     }
 
     /**
