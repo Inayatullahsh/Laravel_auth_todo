@@ -2,7 +2,7 @@
   <div class="mx-auto max-w-2xl p-4 sm:p-6 lg:p-8">
     <form method="POST" action="{{ route('tasks.store') }}">
       @csrf
-      <div class="mb-5">
+      <div class="">
         <x-input-label for="title" :value="__('Title')" />
         <input type="text" id="title"
           class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
@@ -10,7 +10,7 @@
         <x-input-error :messages="$errors->get('title')" class="mt-2" />
       </div>
 
-      <div>
+      <div class="mt-4">
         <x-input-label for="description" :value="__('Description')" />
         <textarea name="description" placeholder="{{ __('Add description...') }}"
           class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
@@ -29,7 +29,7 @@
           <div class="flex-1">
             <div class="flex items-center justify-between">
               <div>
-                <a href="#" class="text-gray-800">{{ $task->title }}</a>
+                <a href="{{ route('tasks.edit', $task) }}" class="text-gray-800">{{ $task->title }}</a>
                 @unless($task->created_at->eq($task->updated_at))
                   <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>
                 @endunless
@@ -46,7 +46,7 @@
                     </button>
                   </x-slot>
                   <x-slot name="content">
-                    <x-dropdown-link>
+                    <x-dropdown-link :href="route('tasks.edit', $task)">
                       {{ __('Edit') }}
                     </x-dropdown-link>
                     <form method="POST" action="">

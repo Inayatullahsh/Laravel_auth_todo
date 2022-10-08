@@ -12,7 +12,9 @@ class Task extends Model
     protected $fillable = [
         'title',
         'description',
+        'is_completed',
     ];
+
 
     public function author()
     {
