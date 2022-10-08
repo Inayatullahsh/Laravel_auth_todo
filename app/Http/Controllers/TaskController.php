@@ -65,6 +65,8 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
+        $this->authorize('update', $task);
+
         return view('tasks.edit', compact('task'));
     }
 
@@ -77,6 +79,9 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
+
+        $this->authorize('update', $task);
+
         $attributes = $request->validate([
             'title' => 'required|string|max:200',
             'description' => 'max:255',
@@ -101,6 +106,8 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
+        $this->authorize('delete', $task);
+
         $task->delete();
 
         return redirect(route('tasks.index'))->with('delete', 'Task deleted successfully!');
