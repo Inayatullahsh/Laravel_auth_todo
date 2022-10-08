@@ -79,7 +79,7 @@ class TaskController extends Controller
     {
         $attributes = $request->validate([
             'title' => 'required|string|max:200',
-            'description' => 'required|string|max:255',
+            'description' => 'max:255',
         ]);
 
         if (isset($request->is_completed)) {
@@ -101,6 +101,8 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+
+        return redirect(route('tasks.index'))->with('delete', 'Task deleted successfully!');
     }
 }
