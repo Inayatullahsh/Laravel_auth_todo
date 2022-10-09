@@ -33,13 +33,13 @@ List of contents:
    cp .env.example .env
    ```
 
-   >Note: We use `MySQL`; if you'd like to use another _DBMS_, modify the `.env` file accordingly.
+   >Note: We use `MySQL`; if you'd like to use another _DBMS_, modify the `.env` file.
 
 
 3. Next, create a database called `laravel_todo`; if you don't like the name, you can change it within the `.env` file.
 Change the name of the `DB_DATABASE` and you're good to go.
    ```sql
-   -- Execute this command for creating database in mysql CLI.
+   -- Execute this command for creating a database in MySQL CLI.
    CREATE DATABASE laravel_todo;
    ```
 
@@ -79,7 +79,7 @@ Change the name of the `DB_DATABASE` and you're good to go.
    php artisan serve
    ```
 
-9.  Final step, Now run the following command in another terminal window and navigate to [https://127.0.0.1:8000](https://127.0.0.1:8000), voilà you app is ready.
+9.  Final step, Run the following command in another terminal window and navigate to [https://127.0.0.1:8000](https://127.0.0.1:8000), voilà your app is ready.
     ```bash
       npm run dev
     ```
