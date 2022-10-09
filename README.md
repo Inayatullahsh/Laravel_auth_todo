@@ -5,7 +5,7 @@ List of contents:
 
 - [Intro](#intro)
 - [Screenshots:](#screenshots)
-- [Setup:](#setup)
+- [Usage:](#usage)
 
 ## Intro
 
